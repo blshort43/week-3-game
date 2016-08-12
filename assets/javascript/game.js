@@ -23,10 +23,12 @@ var guessedLetters = [];
 		remainingGuesses = 10;
 		guessedLetters = [];
 		window.onload();
+		alert("You're psychic! Guess the next letter!")
 	}else if (remainingGuesses == 1){
 		losses++;
-		remainingGuesses = 9;
+		remainingGuesses = 10;
 		guessedLetters = [];
+		alert("You lose, try again!");
 	}else{
 		remainingGuesses --;
 		guessedLetters.push(" " + userGuess);

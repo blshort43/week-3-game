@@ -8,31 +8,35 @@ var computerChoice;
 var userGuess;
 var guessedLetters = [];
 
-	window.onkeyup = function() {
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+	
+    window.onload = function(){
+    	var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+		console.log(computerChoice);
 
-    var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-	console.log(computerChoice);
+
+	window.onkeyup = function() {
+		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
 
 	if (userGuess === computerChoice){
 		wins++;
-		remainingGuesses = 9;
+		remainingGuesses = 10;
 		guessedLetters = [];
+		window.onload();
 	}else if (remainingGuesses == 1){
 		losses++;
 		remainingGuesses = 9;
 		guessedLetters = [];
 	}else{
 		remainingGuesses --;
-		guessedLetters.push(userGuess);
+		guessedLetters.push(" " + userGuess);
 	}
 
 		// var letter = "<p>Your Guesses So Far: " + guessedLetters + ",</p>"
 		var winNumber = "<p>Wins: " + wins + "</p>";
 		var lossNumber = "<p>Losses: " + losses + "</p>";
 		var guessLeft = "<p>Guesses Left: " + remainingGuesses + "</p>";
-		var guessed = "<p>Your Guesses So Far: " + guessedLetters + "</p>"
+		var guessed = "<p>Your Guesses So Far: " + guessedLetters + " " + "</p>"
 
 		// Placing the html into the game ID
 		// var div = document.getElementById('guessedLetters');
@@ -43,8 +47,7 @@ var guessedLetters = [];
 		document.querySelector('#losses').innerHTML = lossNumber;
 		document.querySelector('#guessesLeft').innerHTML = guessLeft;
 	}
-
-
+}
 
 
 
